@@ -20,6 +20,10 @@ span {
   color: #f2aa00;
 }
 
+img {
+  width: 200px;
+}
+
 button {
   font-size: 1.5rem;
   color: white;
@@ -37,4 +41,5 @@ button:hover {
 
 .genres {
   margin-top: 25px;
+  margin-bottom: 25px;
 }
