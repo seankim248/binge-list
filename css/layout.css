@@ -1,0 +1,13 @@
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.row {
+  padding: 0 20px;
+  display: flex;
+}
+
+.column-full {
+  width: 100%;
+}
