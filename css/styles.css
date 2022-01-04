@@ -17,7 +17,7 @@ footer {
 }
 
 h1 {
-  /* text-decoration: underline; */
+  text-decoration: underline;
   font-weight: 400;
   color: white;
 }
@@ -30,12 +30,12 @@ h2 {
 }
 
 span {
-  /* text-decoration: #f2aa00 underline; */
+  text-decoration: #f2aa00 underline;
   color: #f2aa00;
 }
 
 img {
-  width: 200px;
+  width: 205px;
   height: 300px;
   object-fit: cover;
   border-radius: 9px 9px 0 0;
@@ -45,16 +45,17 @@ button {
   font-size: 1.5rem;
   color: white;
   background-color: #2e345b;
-  border: none;
+  border: 1px solid transparent;
   padding: 5px 10px;
   border-radius: 5px;
-  margin: 0 10px
-
-  /* box-shadow: 0 7px 30px rgba(0, 0, 0, 0.5); */
+  margin: 0 10px;
+  transition: 0.3s;
 }
 
 button:hover {
   cursor: pointer;
+  background-color: #f2aa00;
+  color: #1d2141;
 }
 
 .card-list {
@@ -67,16 +68,12 @@ button:hover {
   margin: 25px 10px;
   display: inline-block;
   margin-bottom: 25px;
-  width: 200px;
+  width: 205px;
   height: 370px;
   background-color: #2e345b;
   border-radius: 9px;
   box-shadow: 0 10px 10px -5px black;
 }
-
-/* .movie-card-info {
-  margin-top: 10px;
-} */
 
 .title {
   padding-left: 15px;

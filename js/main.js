@@ -7,7 +7,7 @@ function renderPage1Movies() {
   xhr.responseType = 'json';
   xhr.addEventListener('load', function () {
     var movies = xhr.response.results;
-    for (var i = 0; i < movies.length; i++) {
+    for (var i = movies.length - 1; i >= 0; i--) {
       var outerDiv = document.createElement('div');
       outerDiv.className = 'card-component';
 
@@ -47,7 +47,7 @@ function renderPage1Movies() {
       var rating = document.createElement('h2');
       rating.textContent = movies[i].vote_average;
       if (movies[i].vote_average < 10) rating.className = 'green';
-      if (movies[i].vote_average < 9) rating.className = 'yellow';
+      if (movies[i].vote_average < 8.5) rating.className = 'yellow';
       if (movies[i].vote_average < 5) rating.className = 'red';
       ratingBlock.appendChild(rating);
 
