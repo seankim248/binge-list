@@ -7,53 +7,59 @@ function renderPage1Movies() {
   xhr.responseType = 'json';
   xhr.addEventListener('load', function () {
     var movies = xhr.response.results;
-    for (var i = movies.length - 1; i >= 0; i--) {
-      var outerDiv = document.createElement('div');
-      outerDiv.className = 'card-component';
-
-      var middleDiv = document.createElement('div');
-      middleDiv.className = 'row';
-      outerDiv.appendChild(middleDiv);
-
-      var innerDiv = document.createElement('div');
-      innerDiv.className = 'column-full';
-      middleDiv.appendChild(innerDiv);
-
-      var poster = document.createElement('img');
-      poster.setAttribute('src', 'https://image.tmdb.org/t/p/original' + movies[i].poster_path);
-      innerDiv.appendChild(poster);
-
-      var middleDiv2 = document.createElement('div');
-      middleDiv2.className = 'row';
-      outerDiv.appendChild(middleDiv2);
-
-      var innerDiv2 = document.createElement('div');
-      innerDiv2.className = 'column-three-fourth';
-      middleDiv2.appendChild(innerDiv2);
-
-      var title = document.createElement('h2');
-      title.textContent = movies[i].original_title;
-      title.className = 'title';
-      innerDiv2.appendChild(title);
-
-      var innerDiv3 = document.createElement('div');
-      innerDiv3.className = 'column-one-fourth';
-      middleDiv2.appendChild(innerDiv3);
-
-      var ratingBlock = document.createElement('div');
-      ratingBlock.className = 'rating-block';
-      innerDiv3.appendChild(ratingBlock);
-
-      var rating = document.createElement('h2');
-      rating.textContent = movies[i].vote_average;
-      if (movies[i].vote_average < 10) rating.className = 'green';
-      if (movies[i].vote_average < 8.5) rating.className = 'yellow';
-      if (movies[i].vote_average < 5) rating.className = 'red';
-      ratingBlock.appendChild(rating);
-
-      $cardList.prepend(outerDiv);
+    for (var i = 0; i < movies.length; i++) {
+      var movieCard = renderMovieCard(movies[i]);
+      $cardList.append(movieCard);
     }
   });
   xhr.send();
+}
+
+function renderMovieCard(obj) {
+  var outerDiv = document.createElement('div');
+  outerDiv.className = 'card-component';
+
+  var middleDiv = document.createElement('div');
+  middleDiv.className = 'row';
+  outerDiv.appendChild(middleDiv);
+
+  var innerDiv = document.createElement('div');
+  innerDiv.className = 'column-full';
+  middleDiv.appendChild(innerDiv);
+
+  var poster = document.createElement('img');
+
+  poster.setAttribute('src', 'https://image.tmdb.org/t/p/original' + obj.poster_path);
+  innerDiv.appendChild(poster);
+
+  var middleDiv2 = document.createElement('div');
+  middleDiv2.className = 'row';
+  outerDiv.appendChild(middleDiv2);
+
+  var innerDiv2 = document.createElement('div');
+  innerDiv2.className = 'column-three-fourth';
+  middleDiv2.appendChild(innerDiv2);
+
+  var title = document.createElement('h2');
+  title.textContent = obj.original_title;
+  title.className = 'title';
+  innerDiv2.appendChild(title);
+
+  var innerDiv3 = document.createElement('div');
+  innerDiv3.className = 'column-one-fourth';
+  middleDiv2.appendChild(innerDiv3);
+
+  var ratingBlock = document.createElement('div');
+  ratingBlock.className = 'rating-block';
+  innerDiv3.appendChild(ratingBlock);
+
+  var rating = document.createElement('h2');
+  rating.textContent = obj.vote_average;
+  if (obj.vote_average < 10) rating.className = 'green';
+  if (obj.vote_average < 8.5) rating.className = 'yellow';
+  if (obj.vote_average < 5) rating.className = 'red';
+  ratingBlock.appendChild(rating);
+
+  return outerDiv;
 }
 renderPage1Movies();
