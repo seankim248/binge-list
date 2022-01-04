@@ -16,6 +16,17 @@ footer {
   justify-content: center;
 }
 
+p {
+  position: absolute;
+  right: 2px;
+  bottom: 0;
+  margin-right: 13px;
+  text-align: right;
+  font-size: 0.6rem;
+  color: white;
+  text-decoration: underline;
+}
+
 h1 {
   text-decoration: underline;
   font-weight: 400;
@@ -65,6 +76,7 @@ button:hover {
 }
 
 .card-component {
+  position: relative;
   margin: 25px 10px;
   display: inline-block;
   margin-bottom: 25px;

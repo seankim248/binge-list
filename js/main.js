@@ -60,6 +60,12 @@ function renderMovieCard(obj) {
   if (obj.vote_average < 5) rating.className = 'red';
   ratingBlock.appendChild(rating);
 
+  var innerDiv4 = document.createElement('p');
+  innerDiv4.className = 'movie-info';
+  innerDiv4.textContent = 'See Description';
+  outerDiv.appendChild(innerDiv4);
+
   return outerDiv;
 }
+
 renderPage1Movies();
