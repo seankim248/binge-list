@@ -1,6 +1,44 @@
 var $cardList = document.querySelector('.card-list');
+var $genres = document.querySelector('.genres');
 
-renderPage1Movies();
+renderPopularMovies1();
+
+$genres.addEventListener('click', function (e) {
+  var highlightBtn = document.querySelector('.highlight');
+  highlightBtn.className = '';
+  e.target.className = 'highlight';
+  removeAllChildren($cardList);
+  if (e.target.outerText === 'Popular') {
+    renderPopularMovies1();
+  }
+  if (e.target.outerText === 'Action') {
+    renderActionMovies1();
+  }
+  if (e.target.outerText === 'Thriller') {
+    renderThrillerMovies1();
+  }
+  if (e.target.outerText === 'Drama') {
+    renderDramaMovies1();
+  }
+  if (e.target.outerText === 'Adventure') {
+    renderAdventureMovies1();
+  }
+  if (e.target.outerText === 'Comedy') {
+    renderComedyMovies1();
+  }
+  if (e.target.outerText === 'Horror') {
+    renderHorrorMovies1();
+  }
+  if (e.target.outerText === 'Animation') {
+    renderAnimationMovies1();
+  }
+  if (e.target.outerText === 'Romance') {
+    renderRomanceMovies1();
+  }
+  if (e.target.outerText === 'Mystery') {
+    renderMysteryMovies1();
+  }
+});
 
 $cardList.addEventListener('click', function (e) {
   if (e.target.nodeName === 'P') {
@@ -17,9 +55,49 @@ $cardList.addEventListener('click', function (e) {
   }
 });
 
-function renderPage1Movies() {
+function renderPopularMovies1() {
+  xmlHttpRequest('https://api.themoviedb.org/3/movie/popular?api_key=ae82140c9c251d2fcd2c3ce9711b3299&language=en-US&page=1');
+}
+
+function renderActionMovies1() {
+  xmlHttpRequest('https://api.themoviedb.org/3/discover/movie?api_key=ae82140c9c251d2fcd2c3ce9711b3299&with_genres=28');
+}
+
+function renderThrillerMovies1() {
+  xmlHttpRequest('https://api.themoviedb.org/3/discover/movie?api_key=ae82140c9c251d2fcd2c3ce9711b3299&with_genres=53');
+}
+
+function renderDramaMovies1() {
+  xmlHttpRequest('https://api.themoviedb.org/3/discover/movie?api_key=ae82140c9c251d2fcd2c3ce9711b3299&with_genres=18');
+}
+
+function renderAdventureMovies1() {
+  xmlHttpRequest('https://api.themoviedb.org/3/discover/movie?api_key=ae82140c9c251d2fcd2c3ce9711b3299&with_genres=12');
+}
+
+function renderComedyMovies1() {
+  xmlHttpRequest('https://api.themoviedb.org/3/discover/movie?api_key=ae82140c9c251d2fcd2c3ce9711b3299&with_genres=35');
+}
+
+function renderHorrorMovies1() {
+  xmlHttpRequest('https://api.themoviedb.org/3/discover/movie?api_key=ae82140c9c251d2fcd2c3ce9711b3299&with_genres=27');
+}
+
+function renderAnimationMovies1() {
+  xmlHttpRequest('https://api.themoviedb.org/3/discover/movie?api_key=ae82140c9c251d2fcd2c3ce9711b3299&with_genres=16');
+}
+
+function renderRomanceMovies1() {
+  xmlHttpRequest('https://api.themoviedb.org/3/discover/movie?api_key=ae82140c9c251d2fcd2c3ce9711b3299&with_genres=10749');
+}
+
+function renderMysteryMovies1() {
+  xmlHttpRequest('https://api.themoviedb.org/3/discover/movie?api_key=ae82140c9c251d2fcd2c3ce9711b3299&with_genres=9648');
+}
+
+function xmlHttpRequest(url) {
   var xhr = new XMLHttpRequest();
-  var page1Url = 'https://api.themoviedb.org/3/movie/popular?api_key=ae82140c9c251d2fcd2c3ce9711b3299&language=en-US&page=1';
+  var page1Url = url;
   xhr.open('GET', page1Url);
   xhr.responseType = 'json';
   xhr.addEventListener('load', function () {
@@ -30,6 +108,12 @@ function renderPage1Movies() {
     }
   });
   xhr.send();
+}
+
+function removeAllChildren(element) {
+  while (element.firstChild) {
+    element.firstChild.remove();
+  }
 }
 
 function renderMovieCard(obj) {
