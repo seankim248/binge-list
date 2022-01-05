@@ -102,6 +102,10 @@ input {
   caret-color: #f2aa00;
 }
 
+input::placeholder {
+  color: #414981;
+}
+
 .nav {
   display: flex;
   align-items: center;

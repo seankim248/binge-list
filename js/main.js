@@ -1,11 +1,19 @@
 var $cardList = document.querySelector('.card-list');
 var $genres = document.querySelector('.genres');
+var $input = document.querySelector('input[type="search"]');
 
 renderPopularMovies();
 
+$input.addEventListener('search', function () {
+  var highlightBtn = document.querySelector('.highlight');
+  if (highlightBtn) highlightBtn.className = '';
+  removeAllChildren($cardList);
+  searchMovie($input.value);
+});
+
 $genres.addEventListener('click', function (e) {
   var highlightBtn = document.querySelector('.highlight');
-  highlightBtn.className = '';
+  if (highlightBtn) highlightBtn.className = '';
   e.target.className = 'highlight';
   removeAllChildren($cardList);
   if (e.target.outerText === 'Popular') {
@@ -28,6 +36,10 @@ $cardList.addEventListener('click', function (e) {
     }
   }
 });
+
+function searchMovie(title) {
+  renderMovieList('https://api.themoviedb.org/3/search/movie?api_key=ae82140c9c251d2fcd2c3ce9711b3299&language=en-US&query=' + title + '&page=1&include_adult=false');
+}
 
 function generateUrl(id) {
   return 'https://api.themoviedb.org/3/discover/movie?api_key=ae82140c9c251d2fcd2c3ce9711b3299&with_genres=' + id;
