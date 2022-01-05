@@ -15,3 +15,41 @@
 .column-three-fourth {
   width: 75%;
 }
+
+.column-fifth {
+  width: 20%;
+}
+
+.column-two-fifth {
+  width: 40%;
+}
+
+@media screen and (max-width: 1100px) {
+  .column-fifth {
+    width: 25%;
+  }
+
+  .column-two-fifth {
+    width: 50%;
+  }
+}
+
+@media screen and (max-width: 890px) {
+  .column-fifth {
+    width: calc(100% / 3);
+  }
+
+  .column-two-fifth {
+    width: 66.6%;
+  }
+}
+
+@media screen and (max-width: 680px) {
+  .column-fifth {
+    width: 50%;
+  }
+
+  .column-two-fifth {
+    width: 100%;
+  }
+}
