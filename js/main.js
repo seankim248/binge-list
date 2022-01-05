@@ -87,7 +87,11 @@ function renderMovieCard(obj) {
   middleDiv.appendChild(innerDiv);
 
   var poster = document.createElement('img');
-  poster.setAttribute('src', 'https://image.tmdb.org/t/p/original' + obj.poster_path);
+  if (!obj.poster_path) {
+    poster.setAttribute('src', '../images/placeholder.png');
+  } else {
+    poster.setAttribute('src', 'https://image.tmdb.org/t/p/original' + obj.poster_path);
+  }
   innerDiv.appendChild(poster);
 
   var overlay = document.createElement('div');
