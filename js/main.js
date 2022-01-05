@@ -9,7 +9,7 @@ $genres.addEventListener('click', function (e) {
   e.target.className = 'highlight';
   removeAllChildren($cardList);
   if (e.target.outerText === 'Popular') {
-    renderPopularMovies();
+    return renderPopularMovies();
   }
   renderMovieList(generateUrl(e.target.getAttribute('data-genre-id')));
 });
