@@ -12,6 +12,10 @@
   width: 100%;
 }
 
+.column-one-fourth {
+  width: 25%;
+}
+
 .column-three-fourth {
   width: 75%;
 }
@@ -24,7 +28,7 @@
   width: 40%;
 }
 
-@media screen and (max-width: 1100px) {
+@media screen and (max-width: 1200px) {
   .column-fifth {
     width: 25%;
   }
@@ -34,7 +38,7 @@
   }
 }
 
-@media screen and (max-width: 890px) {
+@media screen and (max-width: 970px) {
   .column-fifth {
     width: calc(100% / 3);
   }
@@ -44,7 +48,7 @@
   }
 }
 
-@media screen and (max-width: 680px) {
+@media screen and (max-width: 750px) {
   .column-fifth {
     width: 50%;
   }

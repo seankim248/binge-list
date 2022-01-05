@@ -44,10 +44,20 @@ h2 {
   color: white;
 }
 
+@keyframes fadein {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
 h5 {
   color: white;
   padding: 0 20px;
   line-height: 30px;
+  transition-delay: 0;
+}
+
+.transition-delay {
+  transition-delay: 0.5s;
 }
 
 span {
@@ -89,6 +99,7 @@ button:hover {
   padding: 0 15px;
   min-width: 200px;
   margin-bottom: 25px;
+  transition: width 0.5s;
 }
 
 .card-component {
@@ -147,7 +158,7 @@ button:hover {
   position: absolute;
   top: 0;
   width: 100%;
-  height: 100%;
+  height: 300px;
   background: rgba(0, 0, 0, 0.8);
   border-radius: 9px 9px 0 0;
   overflow: hidden;

@@ -8,7 +8,7 @@ $cardList.addEventListener('click', function (e) {
     if (e.target.textContent === 'See Description') {
       e.target.textContent = 'Close Description';
       e.target.parentElement.parentElement.className = 'card-container column-two-fifth';
-      overlayElement.className = 'overlay active';
+      overlayElement.className = 'overlay active transition-delay';
     } else if (e.target.textContent === 'Close Description') {
       e.target.textContent = 'See Description';
       e.target.parentElement.parentElement.className = 'card-container column-fifth';
@@ -58,6 +58,7 @@ function renderMovieCard(obj) {
 
   var overview = document.createElement('h5');
   overview.textContent = obj.overview;
+  overview.className = 'overview';
   overlay.appendChild(overview);
 
   var middleDiv2 = document.createElement('div');
