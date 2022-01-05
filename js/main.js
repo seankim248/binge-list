@@ -1,6 +1,18 @@
 var $cardList = document.querySelector('.card-list');
+var $genres = document.querySelector('.genres');
 
-renderPage1Movies();
+renderPopularMovies();
+
+$genres.addEventListener('click', function (e) {
+  var highlightBtn = document.querySelector('.highlight');
+  highlightBtn.className = '';
+  e.target.className = 'highlight';
+  removeAllChildren($cardList);
+  if (e.target.outerText === 'Popular') {
+    return renderPopularMovies();
+  }
+  renderMovieList(generateUrl(e.target.getAttribute('data-genre-id')));
+});
 
 $cardList.addEventListener('click', function (e) {
   if (e.target.nodeName === 'P') {
@@ -17,9 +29,17 @@ $cardList.addEventListener('click', function (e) {
   }
 });
 
-function renderPage1Movies() {
+function generateUrl(id) {
+  return 'https://api.themoviedb.org/3/discover/movie?api_key=ae82140c9c251d2fcd2c3ce9711b3299&with_genres=' + id;
+}
+
+function renderPopularMovies() {
+  renderMovieList('https://api.themoviedb.org/3/movie/popular?api_key=ae82140c9c251d2fcd2c3ce9711b3299&language=en-US&page=1');
+}
+
+function renderMovieList(url) {
   var xhr = new XMLHttpRequest();
-  var page1Url = 'https://api.themoviedb.org/3/movie/popular?api_key=ae82140c9c251d2fcd2c3ce9711b3299&language=en-US&page=1';
+  var page1Url = url;
   xhr.open('GET', page1Url);
   xhr.responseType = 'json';
   xhr.addEventListener('load', function () {
@@ -30,6 +50,12 @@ function renderPage1Movies() {
     }
   });
   xhr.send();
+}
+
+function removeAllChildren(element) {
+  while (element.firstChild) {
+    element.firstChild.remove();
+  }
 }
 
 function renderMovieCard(obj) {
