@@ -12,6 +12,10 @@
   width: 100%;
 }
 
+.column-half {
+  width: 50%;
+}
+
 .column-one-fourth {
   width: 25%;
 }

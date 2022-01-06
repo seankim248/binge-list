@@ -44,9 +44,16 @@ h2 {
   color: white;
 }
 
-@keyframes fadein {
-  from { opacity: 0; }
-  to { opacity: 1; }
+h3 {
+  font-size: 1.4rem;
+  font-weight: 400;
+  padding-left: 20px;
+  color: white;
+}
+
+h3:hover {
+  cursor: pointer;
+  text-decoration: underline;
 }
 
 h5 {
@@ -94,7 +101,7 @@ input {
   font-size: 1rem;
   border-radius: 25px;
   height: 40px;
-  width: 170px;
+  width: 150px;
   background-color: #1d2141;
   border: none;
   outline: none;
@@ -121,7 +128,13 @@ input::placeholder {
 .nav {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: start;
+}
+
+.search {
+  display: flex;
+  align-items: center;
+  justify-content: end;
 }
 
 .card-list {
