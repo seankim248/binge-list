@@ -88,7 +88,7 @@ function renderMovieCard(obj) {
 
   var poster = document.createElement('img');
   if (!obj.poster_path) {
-    poster.setAttribute('src', '../images/placeholder.png');
+    poster.setAttribute('src', '../images/dark-placeholder.png');
   } else {
     poster.setAttribute('src', 'https://image.tmdb.org/t/p/original' + obj.poster_path);
   }
