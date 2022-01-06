@@ -38,23 +38,28 @@ $cardList.addEventListener('click', function (e) {
     }
   }
   if (e.target.nodeName === 'I') {
+    var posterData = e.target.closest('.card-component').querySelector('img').getAttribute('src');
+    var overviewData = e.target.closest('.card-component').querySelector('h5').textContent;
+    var titleData = e.target.closest('.row').querySelector('h2').textContent;
+    var ratingData = e.target.previousSibling.querySelector('h2').textContent;
+    var movieId = e.target.closest('.card-component').getAttribute('data-id');
+    var movieObj = {
+      id: movieId,
+      poster_path: posterData,
+      overview: overviewData,
+      original_title: titleData,
+      vote_average: ratingData
+    };
     if (e.target.className === 'fas fa-plus') {
       e.target.className = 'fas fa-check';
-      var posterData = e.target.closest('.card-component').querySelector('img').getAttribute('src');
-      var overviewData = e.target.closest('.card-component').querySelector('h5').textContent;
-      var titleData = e.target.closest('.row').querySelector('h2').textContent;
-      var ratingData = e.target.previousSibling.querySelector('h2').textContent;
-      var movieId = e.target.closest('.card-component').getAttribute('data-id');
-      var movieObj = {
-        id: movieId,
-        poster_path: posterData,
-        overview: overviewData,
-        original_title: titleData,
-        vote_average: ratingData
-      };
       movies.push(movieObj);
     } else {
       e.target.className = 'fas fa-plus';
+      for (var i = 0; i < movies.length; i++) {
+        if (movieObj.id === movies[i].id) {
+          movies.splice(i, 1);
+        }
+      }
     }
   }
 });
