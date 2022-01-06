@@ -89,6 +89,29 @@ button:hover {
   color: #1d2141;
 }
 
+input {
+  color: #f2aa00;
+  font-size: 1rem;
+  border-radius: 25px;
+  height: 40px;
+  width: 170px;
+  background-color: #1d2141;
+  border: none;
+  outline: none;
+  padding: 0 15px;
+  caret-color: #f2aa00;
+}
+
+input::placeholder {
+  color: #414981;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 .card-list {
   display: flex;
   justify-content: space-between;
