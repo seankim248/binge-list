@@ -56,8 +56,12 @@ h5 {
   transition-delay: 0;
 }
 
-.transition-delay {
-  transition-delay: 0.5s;
+i {
+  color: white;
+}
+
+i:hover {
+  cursor: pointer;
 }
 
 span {
@@ -106,6 +110,10 @@ input::placeholder {
   color: #414981;
 }
 
+.transition-delay {
+  transition-delay: 0.5s;
+}
+
 .nav {
   display: flex;
   align-items: center;
@@ -130,7 +138,7 @@ input::placeholder {
   display: inline-block;
   width: 100%;
   min-width: 200px;
-  height: 370px;
+  height: 390px;
   background-color: #2e345b;
   border-radius: 9px;
   box-shadow: 0 10px 10px -5px black;
@@ -150,7 +158,7 @@ input::placeholder {
 
 .rating-block {
   margin-top: 2.5px;
-  margin-left: 10px;
+  margin-bottom: 5px;
   height: 27px;
   width: 27px;
   padding: 5px;
@@ -192,6 +200,13 @@ input::placeholder {
   background: rgba(0, 0, 0, 0.8);
   border-radius: 9px 9px 0 0;
   overflow: hidden;
+}
+
+.display-flex {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
 }
 
 .hidden {

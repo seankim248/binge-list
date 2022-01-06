@@ -117,12 +117,16 @@ function renderMovieCard(obj) {
   innerDiv2.appendChild(title);
 
   var innerDiv3 = document.createElement('div');
-  innerDiv3.className = 'column-one-fourth';
+  innerDiv3.className = 'column-one-fourth display-flex';
   middleDiv2.appendChild(innerDiv3);
 
   var ratingBlock = document.createElement('div');
   ratingBlock.className = 'rating-block';
   innerDiv3.appendChild(ratingBlock);
+
+  var addIcon = document.createElement('i');
+  addIcon.className = 'fas fa-plus';
+  innerDiv3.appendChild(addIcon);
 
   var rating = document.createElement('h2');
   rating.textContent = obj.vote_average;
