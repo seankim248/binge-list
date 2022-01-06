@@ -1,3 +1,5 @@
+/* global movies */
+
 var $cardList = document.querySelector('.card-list');
 var $genres = document.querySelector('.genres');
 var $input = document.querySelector('input[type="search"]');
@@ -24,15 +26,35 @@ $genres.addEventListener('click', function (e) {
 
 $cardList.addEventListener('click', function (e) {
   if (e.target.nodeName === 'P') {
-    var overlayElement = e.target.parentNode.children[0].children[0].children[1];
+    var overlayElement = e.target.closest('.card-component').querySelector('.overlay');
     if (e.target.textContent === 'See Description') {
       e.target.textContent = 'Close Description';
-      e.target.parentElement.parentElement.className = 'card-container column-two-fifth';
+      e.target.closest('.card-container').className = 'card-container column-two-fifth';
       overlayElement.className = 'overlay active transition-delay';
     } else if (e.target.textContent === 'Close Description') {
       e.target.textContent = 'See Description';
-      e.target.parentElement.parentElement.className = 'card-container column-fifth';
+      e.target.closest('.card-container').className = 'card-container column-fifth';
       overlayElement.className = 'overlay hidden';
+    }
+  }
+  if (e.target.nodeName === 'I') {
+    if (e.target.className === 'fas fa-plus') {
+      e.target.className = 'fas fa-check';
+      var posterData = e.target.closest('.card-component').querySelector('img').getAttribute('src');
+      var overviewData = e.target.closest('.card-component').querySelector('h5').textContent;
+      var titleData = e.target.closest('.row').querySelector('h2').textContent;
+      var ratingData = e.target.previousSibling.querySelector('h2').textContent;
+      var movieId = e.target.closest('.card-component').getAttribute('data-id');
+      var movieObj = {
+        id: movieId,
+        poster_path: posterData,
+        overview: overviewData,
+        original_title: titleData,
+        vote_average: ratingData
+      };
+      movies.push(movieObj);
+    } else {
+      e.target.className = 'fas fa-plus';
     }
   }
 });
@@ -55,9 +77,9 @@ function renderMovieList(url) {
   xhr.open('GET', page1Url);
   xhr.responseType = 'json';
   xhr.addEventListener('load', function () {
-    var movies = xhr.response.results;
-    for (var i = 0; i < movies.length; i++) {
-      var movieCard = renderMovieCard(movies[i]);
+    var movieList = xhr.response.results;
+    for (var i = 0; i < movieList.length; i++) {
+      var movieCard = renderMovieCard(movieList[i]);
       $cardList.append(movieCard);
     }
   });
@@ -70,12 +92,22 @@ function removeAllChildren(element) {
   }
 }
 
+function checkMovieAdded(obj) {
+  for (var i = 0; i < movies.length; i++) {
+    if (parseInt(movies[i].id) === obj.id) {
+      return true;
+    }
+  }
+  return false;
+}
+
 function renderMovieCard(obj) {
   var cardContainer = document.createElement('div');
   cardContainer.className = 'card-container column-fifth';
 
   var outerDiv = document.createElement('div');
   outerDiv.className = 'card-component';
+  outerDiv.setAttribute('data-id', obj.id);
   cardContainer.appendChild(outerDiv);
 
   var middleDiv = document.createElement('div');
@@ -87,6 +119,7 @@ function renderMovieCard(obj) {
   middleDiv.appendChild(innerDiv);
 
   var poster = document.createElement('img');
+  poster.className = 'poster-data';
   if (!obj.poster_path) {
     poster.setAttribute('src', '../images/dark-placeholder.png');
   } else {
@@ -124,15 +157,22 @@ function renderMovieCard(obj) {
   ratingBlock.className = 'rating-block';
   innerDiv3.appendChild(ratingBlock);
 
-  var addIcon = document.createElement('i');
-  addIcon.className = 'fas fa-plus';
-  innerDiv3.appendChild(addIcon);
+  if (checkMovieAdded(obj)) {
+    var checkIcon = document.createElement('i');
+    checkIcon.className = 'fas fa-check';
+    innerDiv3.appendChild(checkIcon);
+  } else {
+    var addIcon = document.createElement('i');
+    addIcon.className = 'fas fa-plus';
+    innerDiv3.appendChild(addIcon);
+  }
 
   var rating = document.createElement('h2');
   rating.textContent = obj.vote_average;
   if (obj.vote_average < 10) rating.className = 'green';
   if (obj.vote_average < 8.5) rating.className = 'yellow';
   if (obj.vote_average < 5) rating.className = 'red';
+  rating.classList.add('rating-data');
   ratingBlock.appendChild(rating);
 
   var innerDiv4 = document.createElement('p');

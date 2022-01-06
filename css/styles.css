@@ -56,10 +56,6 @@ h5 {
   transition-delay: 0;
 }
 
-i {
-  color: white;
-}
-
 i:hover {
   cursor: pointer;
 }
@@ -110,6 +106,14 @@ input::placeholder {
   color: #414981;
 }
 
+.fa-plus {
+  color: white;
+}
+
+.fa-check {
+  color: #a2e346;
+}
+
 .transition-delay {
   transition-delay: 0.5s;
 }
@@ -122,7 +126,6 @@ input::placeholder {
 
 .card-list {
   display: flex;
-  justify-content: space-between;
   flex-wrap: wrap;
 }
 
