@@ -12,38 +12,40 @@
   <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;600;700;800&family=Montserrat:wght@100&family=Poppins:wght@300;400;500&family=Proza+Libre:wght@400;500&family=Raleway:wght@100&display=swap" rel="stylesheet">
 </head>
 <body>
-  <header>
-    <div class="container">
-      <div class="row">
-        <div class="column-half nav">
-          <h1>Binge<span>List</span></h1>
-          <h3>Watchlist</h3>
-        </div>
-        <div class="column-half search">
-          <input type="search" placeholder="search">
-        </div>
+  <header class="container">
+    <div class="row">
+      <div class="column-half nav">
+        <h1>Binge<span>List</span></h1>
+        <h3>Watchlist</h3>
+      </div>
+      <div class="column-half search">
+        <input type="search" placeholder="search">
       </div>
     </div>
   </header>
-  <div class="container">
-    <div class="row">
-      <div class="column-full genres">
-        <button class="highlight">Popular</button>
-        <button data-genre-id="28">Action</button>
-        <button data-genre-id="53">Thriller</button>
-        <button data-genre-id="18">Drama</button>
-        <button data-genre-id="12">Adventure</button>
-        <button data-genre-id="35">Comedy</button>
-        <button data-genre-id="27">Horror</button>
-        <button data-genre-id="16">Animation</button>
-        <button data-genre-id="10749">Romance</button>
-        <button data-genre-id="9648">Mystery</button>
+  <main class="container">
+    <div class="view" data-view="home">
+      <div class="row">
+        <div class="column-full genres">
+          <button class="highlight">Popular</button>
+          <button data-genre-id="28">Action</button>
+          <button data-genre-id="53">Thriller</button>
+          <button data-genre-id="18">Drama</button>
+          <button data-genre-id="12">Adventure</button>
+          <button data-genre-id="35">Comedy</button>
+          <button data-genre-id="27">Horror</button>
+          <button data-genre-id="16">Animation</button>
+          <button data-genre-id="10749">Romance</button>
+          <button data-genre-id="9648">Mystery</button>
+        </div>
       </div>
-    </div>
-  </div>
-  <main>
-    <div class="container">
       <div class="row card-list"></div>
+    </div>
+
+    <div class="view watchlist-header relative" data-view="watchlist">
+      <h1>Watchlist</h1>
+      <button class="back-btn">Back</button>
+      <h6>You have no movies added to your watchlist.</h6>
     </div>
   </main>
 

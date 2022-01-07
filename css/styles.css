@@ -32,7 +32,7 @@ p:hover {
 }
 
 h1 {
-  text-decoration: underline;
+  display: inline-block;
   font-weight: 400;
   color: white;
 }
@@ -61,6 +61,12 @@ h5 {
   padding: 0 20px;
   line-height: 30px;
   transition-delay: 0;
+}
+
+h6 {
+  letter-spacing: 2px;
+  font-size: 0.9rem;
+  color: white;
 }
 
 i:hover {
@@ -111,6 +117,16 @@ input {
 
 input::placeholder {
   color: #414981;
+}
+
+.watchlist-header {
+  text-align: center;
+}
+
+.back-btn {
+  position: absolute;
+  right: 0;
+  top: 15px;
 }
 
 .fa-plus {
