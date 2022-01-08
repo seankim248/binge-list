@@ -32,9 +32,12 @@ p:hover {
 }
 
 h1 {
-  display: inline-block;
   font-weight: 400;
   color: white;
+}
+
+h1:hover {
+  cursor: pointer;
 }
 
 h2 {
@@ -56,6 +59,13 @@ h3:hover {
   text-decoration: underline;
 }
 
+h4 {
+  text-align: center;
+  color: white;
+  font-size: 2.5rem;
+  font-weight: 400;
+}
+
 h5 {
   color: white;
   padding: 0 20px;
@@ -64,6 +74,7 @@ h5 {
 }
 
 h6 {
+  text-align: center;
   letter-spacing: 2px;
   font-size: 0.9rem;
   color: white;
@@ -74,7 +85,6 @@ i:hover {
 }
 
 span {
-  text-decoration: #f2aa00 underline;
   color: #f2aa00;
 }
 
@@ -119,16 +129,6 @@ input::placeholder {
   color: #414981;
 }
 
-.watchlist-header {
-  text-align: center;
-}
-
-.back-btn {
-  position: absolute;
-  right: 0;
-  top: 15px;
-}
-
 .fa-plus {
   color: white;
 }
@@ -153,7 +153,8 @@ input::placeholder {
   justify-content: end;
 }
 
-.card-list {
+.card-list,
+.watchlist-list {
   display: flex;
   flex-wrap: wrap;
 }
@@ -242,9 +243,5 @@ input::placeholder {
 }
 
 .hidden {
-  visibility: hidden;
-}
-
-.active {
-  visibility: visible;
+  display: none;
 }
