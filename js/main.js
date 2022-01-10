@@ -17,7 +17,7 @@ $logo.addEventListener('click', function () {
 });
 
 $watchListTab.addEventListener('click', function () {
-  if (movies.length !== 0 || movies.length === 1) {
+  if (movies.length !== 0) {
     $noMovieMessage.className = 'hidden';
   } else {
     $noMovieMessage.className = '';
@@ -153,6 +153,13 @@ function renderMovieList(url) {
   });
   xhr.send();
 }
+
+// function updateMovies() {
+//   for (var i = 0; i < movies.length; ++i) {
+//     var cardComponent = document.querySelector('div[data-id=' + movies[i].id + ']');
+//     cardComponent.className('fas fa-plus');
+//   }
+// }
 
 function removeAllChildren(element) {
   while (element.firstChild) {
