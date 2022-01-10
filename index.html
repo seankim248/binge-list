@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+  <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -15,32 +15,39 @@
   <header>
     <div class="container">
       <div class="row">
-        <div class="column-full nav">
+        <div class="column-half nav">
           <h1>Binge<span>List</span></h1>
+          <h3>Watchlist</h3>
+        </div>
+        <div class="column-half search">
           <input type="search" placeholder="search">
         </div>
       </div>
     </div>
   </header>
-  <div class="container">
-    <div class="row">
-      <div class="column-full genres">
-        <button class="highlight">Popular</button>
-        <button data-genre-id="28">Action</button>
-        <button data-genre-id="53">Thriller</button>
-        <button data-genre-id="18">Drama</button>
-        <button data-genre-id="12">Adventure</button>
-        <button data-genre-id="35">Comedy</button>
-        <button data-genre-id="27">Horror</button>
-        <button data-genre-id="16">Animation</button>
-        <button data-genre-id="10749">Romance</button>
-        <button data-genre-id="9648">Mystery</button>
+  <main class="container">
+    <div class="view" data-view="home">
+      <div class="row">
+        <div class="column-full genres">
+          <button class="highlight">Popular</button>
+          <button data-genre-id="28">Action</button>
+          <button data-genre-id="53">Thriller</button>
+          <button data-genre-id="18">Drama</button>
+          <button data-genre-id="12">Adventure</button>
+          <button data-genre-id="35">Comedy</button>
+          <button data-genre-id="27">Horror</button>
+          <button data-genre-id="16">Animation</button>
+          <button data-genre-id="10749">Romance</button>
+          <button data-genre-id="9648">Mystery</button>
+        </div>
       </div>
-    </div>
-  </div>
-  <main>
-    <div class="container">
       <div class="row card-list"></div>
+    </div>
+
+    <div class="view hidden" data-view="watchlist">
+      <h4>Watchlist</h4>
+      <h6>You have no movies added to your watchlist.</h6>
+      <div class="watchlist-list"></div>
     </div>
   </main>
 

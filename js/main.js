@@ -1,10 +1,29 @@
 /* global movies */
 
 var $cardList = document.querySelector('.card-list');
+var $watchList = document.querySelector('.watchlist-list');
 var $genres = document.querySelector('.genres');
 var $input = document.querySelector('input[type="search"]');
+var $watchListTab = document.querySelector('h3');
+var $views = document.querySelectorAll('.view');
+var $logo = document.querySelector('h1');
+var $noMovieMessage = document.querySelector('h6');
 
 renderPopularMovies();
+renderWatchList();
+
+$logo.addEventListener('click', function () {
+  changeView('home');
+});
+
+$watchListTab.addEventListener('click', function () {
+  if (movies.length !== 0) {
+    $noMovieMessage.className = 'hidden';
+  } else {
+    $noMovieMessage.className = '';
+  }
+  changeView('watchlist');
+});
 
 $input.addEventListener('search', function () {
   var highlightBtn = document.querySelector('.highlight');
@@ -30,7 +49,7 @@ $cardList.addEventListener('click', function (e) {
     if (e.target.textContent === 'See Description') {
       e.target.textContent = 'Close Description';
       e.target.closest('.card-container').className = 'card-container column-two-fifth';
-      overlayElement.className = 'overlay active transition-delay';
+      overlayElement.className = 'overlay transition-delay';
     } else if (e.target.textContent === 'Close Description') {
       e.target.textContent = 'See Description';
       e.target.closest('.card-container').className = 'card-container column-fifth';
@@ -53,6 +72,7 @@ $cardList.addEventListener('click', function (e) {
     if (e.target.className === 'fas fa-plus') {
       e.target.className = 'fas fa-check';
       movies.push(movieObj);
+      $watchList.append(renderMovieCard(movieObj));
     } else {
       e.target.className = 'fas fa-plus';
       for (var i = 0; i < movies.length; i++) {
@@ -61,6 +81,32 @@ $cardList.addEventListener('click', function (e) {
         }
       }
     }
+  }
+});
+
+$watchList.addEventListener('click', function (e) {
+  if (e.target.nodeName === 'P') {
+    var overlayElement = e.target.closest('.card-component').querySelector('.overlay');
+    if (e.target.textContent === 'See Description') {
+      e.target.textContent = 'Close Description';
+      e.target.closest('.card-container').className = 'card-container column-two-fifth';
+      overlayElement.className = 'overlay transition-delay';
+    } else if (e.target.textContent === 'Close Description') {
+      e.target.textContent = 'See Description';
+      e.target.closest('.card-container').className = 'card-container column-fifth';
+      overlayElement.className = 'overlay hidden';
+    }
+  }
+  if (e.target.nodeName === 'I') {
+    var movieId = e.target.closest('.card-component').getAttribute('data-id');
+    $noMovieMessage.className = 'hidden';
+    for (var i = 0; i < movies.length; i++) {
+      if (movieId === movies[i].id) {
+        movies.splice(i, 1);
+      }
+    }
+    var cardContainer = e.target.closest('.card-container');
+    cardContainer.remove();
   }
 });
 
@@ -74,6 +120,23 @@ function generateUrl(id) {
 
 function renderPopularMovies() {
   renderMovieList('https://api.themoviedb.org/3/movie/popular?api_key=ae82140c9c251d2fcd2c3ce9711b3299&language=en-US&page=1');
+}
+
+function changeView(view) {
+  for (var i = 0; i < $views.length; i++) {
+    if ($views[i].getAttribute('data-view') === view) {
+      $views[i].className = 'view';
+    } else {
+      $views[i].className = 'view hidden';
+    }
+  }
+}
+
+function renderWatchList() {
+  for (var i = 0; i < movies.length; i++) {
+    var movieCard = renderMovieCard(movies[i]);
+    $watchList.append(movieCard);
+  }
 }
 
 function renderMovieList(url) {
@@ -91,6 +154,13 @@ function renderMovieList(url) {
   xhr.send();
 }
 
+// function updateMovies() {
+//   for (var i = 0; i < movies.length; ++i) {
+//     var cardComponent = document.querySelector('div[data-id=' + movies[i].id + ']');
+//     cardComponent.className('fas fa-plus');
+//   }
+// }
+
 function removeAllChildren(element) {
   while (element.firstChild) {
     element.firstChild.remove();
@@ -99,7 +169,7 @@ function removeAllChildren(element) {
 
 function checkMovieAdded(obj) {
   for (var i = 0; i < movies.length; i++) {
-    if (parseInt(movies[i].id) === obj.id) {
+    if (parseInt(movies[i].id) === parseInt(obj.id)) {
       return true;
     }
   }
@@ -173,7 +243,8 @@ function renderMovieCard(obj) {
   }
 
   var rating = document.createElement('h2');
-  rating.textContent = obj.vote_average;
+  var ratingDecimal = parseInt(obj.vote_average).toFixed(1);
+  rating.textContent = ratingDecimal;
   if (obj.vote_average < 10) rating.className = 'green';
   if (obj.vote_average < 8.5) rating.className = 'yellow';
   if (obj.vote_average < 5) rating.className = 'red';
