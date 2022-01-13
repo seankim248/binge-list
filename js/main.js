@@ -154,13 +154,6 @@ function renderMovieList(url) {
   xhr.send();
 }
 
-// function updateMovies() {
-//   for (var i = 0; i < movies.length; ++i) {
-//     var cardComponent = document.querySelector('div[data-id=' + movies[i].id + ']');
-//     cardComponent.className('fas fa-plus');
-//   }
-// }
-
 function removeAllChildren(element) {
   while (element.firstChild) {
     element.firstChild.remove();
