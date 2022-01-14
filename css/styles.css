@@ -118,7 +118,7 @@ input {
   font-size: 1rem;
   border-radius: 25px;
   height: 40px;
-  width: 150px;
+  width: 250px;
   background-color: #1d2141;
   border: none;
   outline: none;
@@ -234,6 +234,7 @@ input::placeholder {
   background: rgba(0, 0, 0, 0.8);
   border-radius: 9px 9px 0 0;
   overflow: hidden;
+  transition-duration: 500ms;
 }
 
 .display-flex {

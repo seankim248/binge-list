@@ -34,13 +34,16 @@ $input.addEventListener('search', function () {
 
 $genres.addEventListener('click', function (e) {
   var highlightBtn = document.querySelector('.highlight');
-  if (highlightBtn) highlightBtn.className = '';
-  e.target.className = 'highlight';
-  removeAllChildren($cardList);
+  if (highlightBtn && e.target.nodeName === 'BUTTON') {
+    highlightBtn.className = '';
+    e.target.className = 'highlight';
+    removeAllChildren($cardList);
+  }
   if (e.target.outerText === 'Popular') {
     return renderPopularMovies();
+  } else {
+    renderMovieList(generateUrl(e.target.getAttribute('data-genre-id')));
   }
-  renderMovieList(generateUrl(e.target.getAttribute('data-genre-id')));
 });
 
 $cardList.addEventListener('click', function (e) {
@@ -80,6 +83,8 @@ $cardList.addEventListener('click', function (e) {
           movies.splice(i, 1);
         }
       }
+      removeAllChildren($watchList);
+      renderWatchList();
     }
   }
 });
@@ -107,6 +112,8 @@ $watchList.addEventListener('click', function (e) {
     }
     var cardContainer = e.target.closest('.card-container');
     cardContainer.remove();
+    removeAllChildren($cardList);
+    renderPopularMovies();
   }
 });
 

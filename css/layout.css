@@ -40,6 +40,10 @@
   .column-two-fifth {
     width: 50%;
   }
+
+  .searchbar {
+    width: 200px;
+  }
 }
 
 @media screen and (max-width: 970px) {
@@ -59,5 +63,9 @@
 
   .column-two-fifth {
     width: 100%;
+  }
+
+  .searchbar {
+    width: 150px;
   }
 }
