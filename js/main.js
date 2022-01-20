@@ -152,6 +152,7 @@ function renderMovieList(url) {
   var page1Url = url;
   xhr.open('GET', page1Url);
   xhr.responseType = 'json';
+  $loader.className = 'loader'
   xhr.addEventListener('load', function () {
     var movieList = xhr.response.results;
     for (var i = 0; i < movieList.length; i++) {
