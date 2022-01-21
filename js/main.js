@@ -12,12 +12,12 @@ var $loader = document.querySelector('.loader');
 var $noResults = document.querySelector('.no-results');
 var $failed = document.querySelector('.failed');
 
-
 renderPopularMovies();
 renderWatchList();
 
 $logo.addEventListener('click', function () {
   changeView('home');
+  $noResults.className = 'no-results hidden';
 });
 
 $watchListTab.addEventListener('click', function () {
@@ -173,10 +173,7 @@ function renderMovieList(url) {
   $noResults.className = 'no-results hidden';
   xhr.onreadystatechange = function () {
     if (xhr.readyState === 4) {
-      if (xhr.status === 200) {
-        console.log('successful');
-      } else {
-        console.log('failed');
+      if (xhr.status !== 200) {
         $failed.className = 'failed';
         $loader.className = 'loader hidden';
       }
