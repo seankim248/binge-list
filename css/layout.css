@@ -41,7 +41,7 @@
     width: 50%;
   }
 
-  .searchbar {
+  .search-bar {
     width: 200px;
   }
 }
@@ -65,7 +65,32 @@
     width: 100%;
   }
 
-  .searchbar {
+  .search-bar {
     width: 150px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  .watchlist-size {
+    font-size: 1rem;
+  }
+
+  .column-fifth {
+    width: 100%;
+  }
+
+  .search-bar {
+    width: 100px;
+  }
+}
+
+@media screen and (max-width: 350px) {
+  .watchlist-size {
+    font-size: 0.85rem;
+    margin-left: 12px;
   }
 }
