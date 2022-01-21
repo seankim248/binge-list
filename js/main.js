@@ -9,6 +9,9 @@ var $views = document.querySelectorAll('.view');
 var $logo = document.querySelector('h1');
 var $noMovieMessage = document.querySelector('h6');
 var $loader = document.querySelector('.loader');
+var $noResults = document.querySelector('.no-results');
+var $failed = document.querySelector('.failed');
+
 
 renderPopularMovies();
 renderWatchList();
@@ -35,8 +38,10 @@ $input.addEventListener('search', function () {
 
 $genres.addEventListener('click', function (e) {
   var highlightBtn = document.querySelector('.highlight');
-  if (highlightBtn && e.target.nodeName === 'BUTTON') {
-    highlightBtn.className = '';
+  if (e.target.nodeName === 'BUTTON') {
+    if (highlightBtn) {
+      highlightBtn.className = '';
+    }
     e.target.className = 'highlight';
     removeAllChildren($cardList);
   }
@@ -152,15 +157,31 @@ function renderMovieList(url) {
   var page1Url = url;
   xhr.open('GET', page1Url);
   xhr.responseType = 'json';
-  $loader.className = 'loader'
+  $loader.className = 'loader';
   xhr.addEventListener('load', function () {
     var movieList = xhr.response.results;
     for (var i = 0; i < movieList.length; i++) {
       var movieCard = renderMovieCard(movieList[i]);
       $cardList.append(movieCard);
     }
+    $loader.className = 'loader hidden';
+    if (movieList.length === 0) {
+      $noResults.className = 'no-results';
+    }
   });
   xhr.send();
+  $noResults.className = 'no-results hidden';
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState === 4) {
+      if (xhr.status === 200) {
+        console.log('successful');
+      } else {
+        console.log('failed');
+        $failed.className = 'failed';
+        $loader.className = 'loader hidden';
+      }
+    }
+  }
 }
 
 function removeAllChildren(element) {
