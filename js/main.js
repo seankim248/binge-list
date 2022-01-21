@@ -7,7 +7,7 @@ var $input = document.querySelector('input[type="search"]');
 var $watchListTab = document.querySelector('h3');
 var $views = document.querySelectorAll('.view');
 var $logo = document.querySelector('h1');
-var $noMovieMessage = document.querySelector('h6');
+var $noMovieMessage = document.querySelector('.no-movies');
 var $loader = document.querySelector('.loader');
 var $noResults = document.querySelector('.no-results');
 var $failed = document.querySelector('.failed');
