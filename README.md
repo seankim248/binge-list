@@ -55,9 +55,4 @@ Try the application live at https://seankim248.github.io/binge-list/
     npm install
     ```
 
-1. Start the project. Once started you can view the application by opening http://localhost:3000 in your browser.
-
-    ```shell
-    npm run dev
-    ```
-
+1. Start the project. Once started you can view the application by opening your index.html file.
